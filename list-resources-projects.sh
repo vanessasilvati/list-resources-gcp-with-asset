@@ -11,6 +11,6 @@ do
             --content-type resource \
             --project ${PROJECT_ID} \
             --asset-types compute.googleapis.com.* \
-            --output-path "gs://controle-inventario/resources-4"
+            --output-path "gs://YOUR_BUCKET/NEW_FILE"
     fi
 done
