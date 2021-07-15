@@ -3,7 +3,6 @@
 for PROJECT_ID in $(gcloud projects list --format="value(projectId)")
 do
     echo projectId= $PROJECT_ID # informação adicionada para teste
-
     if [ -z $PROJECT_ID ]
         then
             echo "Variable PROJECT_ID is NULL"
