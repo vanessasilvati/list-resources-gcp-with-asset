@@ -1,0 +1,1 @@
+# list-resources-gcp-with-asset
