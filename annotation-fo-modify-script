@@ -1,0 +1,10 @@
+Novas informações para adicionar ao script 
+
+# Exportar projectNumber
+export PROJECT_NUMBER=$(gcloud projects describe ${PROJECT_ID} --format="value(projectNumber)")
+
+# Aplicar Role SA para criar arquivo no Bucket
+gcloud projects add-iam-policy-binding <"PRJECT_ID"> \
+   --member "serviceAccount:service-${PROJECT_NUMBER}@gcp-sa-cloudasset.iam.gserviceaccount.com" \
+   --role roles/storage.objects.create
+   
