@@ -1,6 +1,6 @@
 Novas informações para adicionar ao script 
 
-# Export projectNumber
+# Export projectNumber e projectId
 export PROJECT_NUMBER=$(gcloud projects describe ${PROJECT_ID} --format="value(projectNumber)")
 export PROJECT_ID=$(gcloud projects describe ${PROJECT_ID} --format="value(projectId)")
 
@@ -8,4 +8,21 @@ export PROJECT_ID=$(gcloud projects describe ${PROJECT_ID} --format="value(proje
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
 --member="serviceAccount:service-${PROJECT_NUMBER}@gcp-sa-cloudasset.iam.gserviceaccount.com" \
 --role="roles/storage.objectCreator"
+
+# Export
+gcloud asset export \
+--content-type resource \
+--project $PROJECT_ID \
+--asset-types compute.googleapis.com.* \
+--output-path "gs://YOUR_BUCKET/NEW_FILE"
+
+# Exportar de toda a Organização
+
+export ORGANIZATION_ID=$(gcloud organizations list | grep -n 1 | awk {'print $2'})
+
+gcloud asset export \
+--content-type resource \
+--organization $ORGANIZATION_ID \
+--asset-types compute.googleapis.com.* \
+--output-path "gs://YOUR_BUCKET/NEW_FILE"
    
