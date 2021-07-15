@@ -6,7 +6,7 @@ do
 
     if [ -z $PROJECT_ID ]
         then
-            echo "Variables PROJECT_ID is NULL"
+            echo "Variable PROJECT_ID is NULL"
         else
             gcloud asset export \
             --content-type resource \
